@@ -4,7 +4,5 @@ class FutureDateValidator < ActiveModel::EachValidator
             message = options[:message] || :future_date
             record.errors.add(attribute, message)
         end
-        
     end
-    
 end

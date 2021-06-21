@@ -39,8 +39,5 @@ module Admin
             rescue ActiveRecord::RecordInvalid
                 @errors.merge!(record.errors.messages)
         end
-        
-        
-        
     end
 end

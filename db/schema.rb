@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_192407) do
+ActiveRecord::Schema.define(version: 2021_06_21_232222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 2021_06_21_192407) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -49,16 +49,8 @@ ActiveRecord::Schema.define(version: 2021_06_21_192407) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "coupns", force: :cascade do |t|
-    t.string "code"
-    t.integer "status"
-    t.decimal "discount_value", precision: 5
-    t.datetime "due_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "coupons", force: :cascade do |t|
+    t.string "name"
     t.string "code"
     t.integer "status"
     t.decimal "discount_value", precision: 5, scale: 2
@@ -105,8 +97,8 @@ ActiveRecord::Schema.define(version: 2021_06_21_192407) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status"
-    t.boolean "featured"
-    t.index ["productable_type", "productable_id"], name: "index_products_on_productable"
+    t.boolean "featured", default: false
+    t.index ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id"
   end
 
   create_table "system_requirements", force: :cascade do |t|
