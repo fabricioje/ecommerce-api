@@ -63,7 +63,7 @@ describe Admin::ModelLoadingService do
         expect(service.pagination[:total_pages]).to eq 4
       end
 
-      xit "does not return unenexpected records" do
+      it "does not return unenexpected records" do
         params.merge!(page: 1, length: 50)
         service = described_class.new(SystemRequirement.all, params)
         service.call

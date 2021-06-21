@@ -18,4 +18,5 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.alias_it_behaves_like_to :it_has_behavior_of, 'has behavior of' #Apelido para o it_behaves_like, assim ele vai aparecer o que esta entre aspas e não o seu nome padrao
 end

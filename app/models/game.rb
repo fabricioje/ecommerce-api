@@ -1,4 +1,7 @@
 class Game < ApplicationRecord
+  include Paginatable
+  include LikeSearchable
+  
   belongs_to :system_requirement
   has_one :product, as: :productable
   validates :mode, presence: true
