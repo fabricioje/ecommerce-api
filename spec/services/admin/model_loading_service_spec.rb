@@ -13,7 +13,7 @@ describe Admin::ModelLoadingService do
         system_requirements
       end
 
-      let(:unexpected_system_requirements) do
+      let!(:unexpected_system_requirements) do
         system_requirements = []
         15.times do |n| 
           system_requirements << create(:system_requirement, name: "Search #{n + 16}")

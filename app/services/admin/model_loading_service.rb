@@ -10,7 +10,6 @@ module Admin
         end
 
         def call
-            fix_pagination_values
             set_pagination_values
             searched = search_records(@searchable_model)
             @records = searched.order(@params[:order].to_h)
@@ -20,11 +19,6 @@ module Admin
 
 
         private
-
-        def fix_pagination_values
-            @pagination[:page] = @searchable_model.model::DEFAULT_PAGE if @pagination[:page] <= 0
-            @pagination[:length] = @searchable_model.model::MAX_PER_PAGE if @pagination[:length] <= 0
-        end
 
         def search_records(searched)
             return searched unless @params.has_key?(:search)
@@ -46,6 +40,5 @@ module Admin
             @pagination.merge!(page: @params[:page], length: @records.count, 
                                total: total_filtered, total_pages: total_pages)
         end
-        
     end
 end
