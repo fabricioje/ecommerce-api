@@ -3,6 +3,8 @@
 class User < ActiveRecord::Base
   include Paginatable
   include LikeSearchable
+
+  has_many :wish_items
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

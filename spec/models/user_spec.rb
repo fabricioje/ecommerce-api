@@ -7,4 +7,6 @@ RSpec.describe User, type: :model do
 
   it_has_behavior_of "like searchable concern", :user, :name
   it_has_behavior_of "paginatable concern", :user
+
+  it { is_expected.to have_many :wish_items }
 end
