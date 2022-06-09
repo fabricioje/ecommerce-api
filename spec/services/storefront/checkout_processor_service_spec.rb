@@ -40,17 +40,17 @@ describe Storefront::CheckoutProcessorService do
       context "when payment_type is :credit_card" do
         let!(:products) { create_list(:product, 3) }
 
-        let(:params) do 
-          { 
-            installments: 1, user_id: user.id, payment_type: :credit_card, 
-            items: [{ product_id: products.first.id, quantity: 1 }, { product_id: products.second.id, quantity: 1 }] 
-          } 
+        let(:params) do
+          {
+            installments: 1, user_id: user.id, payment_type: :credit_card,
+            items: [{ product_id: products.first.id, quantity: 1 }, { product_id: products.second.id, quantity: 1 }]
+          }
         end
 
-        # it "set error when :address is invalid" do
-        #   service = error_proof_call(params)
-        #   expect(service.errors).to have_key(:address)
-        # end
+        it "set error when :address is invalid" do
+          service = error_proof_call(params)
+          expect(service.errors).to have_key(:address)
+        end
 
         it "set error when address :card_hash is not present" do
           service = error_proof_call(params)
